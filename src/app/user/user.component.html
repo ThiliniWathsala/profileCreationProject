@@ -1,0 +1,157 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+             
+        <div style="text-align:center">
+                <img [src]="imgSrc " style="border-radius: 80%; height: 250px;">
+                <br>
+               
+                <input type="file" (change)="onFileSelect($event)">
+                <button (click)="onUpdate($event)"></button>
+                <button (click)="change($event)"  class="btn btn-primary" >Change Image</button>
+        </div>
+        <div style="text-align:center">
+          <p>{{user.fname}} {{user.lname}}</p>
+          <p>{{user.position}}</p>
+        </div>
+  
+        <hr>
+  
+        <div>
+          <h5 style="display:inline-block">Personal Details</h5>
+          <button style="float:right"
+          class="btn btn-primary" 
+           (click)="PersonDetailsEditButtonClick($event)" *ngIf="isPersonDetailsEditableDisabled">Edit</button>
+        </div>
+        
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input 
+            [disabled]="isPersonDetailsEditableDisabled"
+            class="form-control"
+            type="text"
+            [(ngModel)]="user.fname"
+            value="{{user.fname}}"
+            >
+        </div>
+  
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input 
+          [(ngModel)]="user.lname"
+          [disabled]="isPersonDetailsEditableDisabled"
+          class="form-control"
+          type="text" value="{{user.lname}}">
+        </div>
+  
+        <div class="form-group">
+          <label for="Position">Position</label>
+          <input 
+          [(ngModel)]="user.position"
+          [disabled]="isPersonDetailsEditableDisabled"
+          class="form-control"
+          type="text"  value="{{user.position}}">
+        </div>
+  
+        <div class="form-group">
+          <label for="About-me">About me</label>
+              <textarea
+         
+            [(ngModel)]="user. aboutme"
+            [disabled]="isPersonDetailsEditableDisabled"
+            class="form-control"
+            cols="30"
+            rows="5"
+            type="text"  value="{{user.aboutme}}">
+        
+          </textarea>
+        </div>
+  
+        <div>
+          <button style="float:right"
+           *ngIf="!isPersonDetailsEditableDisabled" 
+           class="btn btn-primary" 
+           (click)="changePersonalDetails($event)">Save changes</button>
+         </div><br><br>
+  
+         <hr>
+  
+         <div>
+          <h5 style="display:inline-block">Contact Details</h5>
+            <button
+              style="float:right"
+              class="btn btn-primary" 
+             (click)="ContactDetailsEditableDisabled($event)" *ngIf="isContactDetailsEditableDisabled">Edit</button>
+        </div>
+  
+        <div class="from-group">
+          <label for="Contact">Contatc No</label>
+        <ul >
+          <li *ngFor="let contact of user.contacts"> 
+        
+          <input 
+          [disabled]="isContactDetailsEditableDisabled"
+          class="form-control"
+          type="text"  value="{{contact}}">
+        </li>
+        </ul>
+        </div>
+  
+          <!--hide the add contact button-->
+          <button 
+          *ngIf = "!isContactDetailsEditableDisabled" 
+          style="float:left" 
+          class="btn btn-primary" 
+          (click)="addNewContacts($event)"
+          
+          >Add more contacts</button><br><br>
+  
+          <label for="Contact">Address</label>           
+          
+          <div style="margin-left:8%">
+  
+              <div class="from-group">
+                  <label for="number"> No:</label>
+                  <input
+                  [disabled]="isContactDetailsEditableDisabled" 
+                    class="form-control"
+                    type="text"  value="{{user.no}}">
+                </div>
+                <div class="from-group">
+                    <label for="Street">Street:</label>
+                    <input 
+                    [disabled]="isContactDetailsEditableDisabled"
+                      class="form-control"
+                      type="text"  value="{{user.street}}">
+                  </div>
+                  <div class="from-group">
+                      <label for="City">City:</label>
+                      <input 
+                      [disabled]="isContactDetailsEditableDisabled"
+                       class="form-control"
+                       type="text"  value="{{user.city}}">
+                    </div>
+                   </div>
+  
+                   <div class="from-group">
+                    <label for="email">email</label>
+                      <input 
+                            [disabled]="isContactDetailsEditableDisabled"
+                            class="form-control"
+                            type="text"  value="{{user.email}}">
+                  </div><br><br>
+  
+                  <!--contact details save button-->
+                  <div>
+                    <button style="float:right"
+                     *ngIf="!isContactDetailsEditableDisabled" 
+                     class="btn btn-primary" 
+                     (click)=" changeContactlDetails($event)">Save changes</button>
+                   </div><br><br>
+                <br>
+  
+      </div>
+    </div>
+  </div>
+  
