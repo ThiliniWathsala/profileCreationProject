@@ -2,14 +2,16 @@
 <div class="container">
     <div class="row">
       <div class="col-md-12">
-             
+
+        
+            
         <div style="text-align:center">
                 <img [src]="imgSrc " style="border-radius: 80%; height: 250px;">
                 <br>
                
                 <input type="file" (change)="onFileSelect($event)">
                 <button (click)="onUpdate($event)"></button>
-                <button (click)="change($event)"  class="btn btn-primary" >Change Image</button>
+              <!--  <button (click)="change($event)"  class="btn btn-primary" >Change Image</button> -->
         </div>
         <div style="text-align:center">
           <p>{{user.fname}} {{user.lname}}</p>
